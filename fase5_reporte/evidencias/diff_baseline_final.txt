@@ -1,0 +1,8 @@
+DIFF BASELINE VS SNAPSHOT FINAL
+===============================
+
+Estado del diff: CON DIFERENCIAS DETECTADAS
+
+Archivos generados por Genie diff:
+- evidencias/diff_005D-10/diff_interface_iosxe_CSR1kv_ops.txt
+- evidencias/diff_005D-10/diff_routing_iosxe_CSR1kv_ops.txt

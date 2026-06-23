@@ -1,0 +1,57 @@
+[2026-06-23 04:15:41,818] +++ CSR1kv logfile evidencias/snapshot_final_005D-10/connection_CSR1kv.txt +++
+[2026-06-23 04:15:41,821] +++ Unicon plugin iosxe +++
+Warning: Permanently added '192.168.56.101' (RSA) to the list of known hosts.
+
+[2026-06-23 04:15:42,087] +++ connection to spawn: ssh -l cisco 192.168.56.101 -p 22, id: 139762458557120 +++
+[2026-06-23 04:15:42,087] connection to CSR1kv
+
+ACCESO RESTRINGIDO - AGRICEN
+Password: 
+
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***   Emerging Technologies Workshop:     ***
+***    Model Driven Programmability       ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+
+
+RTR-AGRICEN#[2026-06-23 04:18:20,082] +++ CSR1kv logfile evidencias/snapshot_final_005D-10/connection_CSR1kv.txt +++
+[2026-06-23 04:18:20,082] +++ Unicon plugin iosxe +++
+Warning: Permanently added '192.168.56.101' (RSA) to the list of known hosts.
+
+[2026-06-23 04:18:20,319] +++ connection to spawn: ssh -l cisco 192.168.56.101 -p 22, id: 140130532279344 +++
+[2026-06-23 04:18:20,319] connection to CSR1kv
+
+ACCESO RESTRINGIDO - AGRICEN
+Password: 
+
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***   Emerging Technologies Workshop:     ***
+***    Model Driven Programmability       ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+
+
+
+RTR-AGRICEN#
+[2026-06-23 04:18:20,536] Learned hostname(s) : ['RTR-AGRICEN'].
+[2026-06-23 04:18:20,536] +++ initializing handle +++
+[2026-06-23 04:18:20,537] +++ RTR-AGRICEN: executing command 'terminal length 0' +++
+terminal length 0
+RTR-AGRICEN#

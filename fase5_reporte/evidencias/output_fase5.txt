@@ -1,0 +1,40 @@
+CERTIFICADO DE COMPLIANCE EP3
+================================
+
+Alumno:
+  Codigo : 005D-10
+  Nombre : Jeldres Molinett Joao Franco
+
+Cliente:
+  Empresa  : Agricola Central SA
+  Hostname : RTR-AGRICEN
+
+Router:
+  IP de gestion        : 192.168.56.101
+  Usuario              : cisco
+  Loopback gestion     : Loopback10
+  IP Loopback          : 10.5.10.1/24
+  Mascara Loopback     : 255.255.255.0
+  Descripcion WAN      : Enlace-WAN-Talca
+  Banner de acceso     : ACCESO RESTRINGIDO - AGRICEN
+  Servidor NTP         : 8.8.8.8
+
+Validaciones:
+  NETCONF              : CONFORME
+  RESTCONF             : CONFORME
+  Snapshot final Genie : CONFORME
+  Diff Genie           : CON DIFERENCIAS DETECTADAS
+
+Resultado final de compliance:
+  CONFORME
+
+Metadatos:
+  Fecha de ejecucion   : 2026-06-23 04:20:08.899597
+  Host VM              : labvm
+
+Observacion:
+  El router fue aprovisionado mediante Ansible y validado posteriormente mediante NETCONF y RESTCONF.
+  El snapshot final y el diff de Genie permiten comparar el estado inicial contra el estado final del equipo.
+
+Certificado generado en: /home/devasc/ep3-automatizacion-005D-10/fase5_reporte/evidencias/certificado_compliance_005D-10.txt
+Resumen diff generado en: /home/devasc/ep3-automatizacion-005D-10/fase5_reporte/evidencias/diff_baseline_final.txt
