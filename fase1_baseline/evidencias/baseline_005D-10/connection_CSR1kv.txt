@@ -1,0 +1,50 @@
+[2026-06-23 03:35:12,700] +++ CSR1kv logfile evidencias/baseline_005D-10/connection_CSR1kv.txt +++
+[2026-06-23 03:35:12,700] +++ Unicon plugin iosxe +++
+Password: 
+[2026-06-23 03:35:13,185] +++ connection to spawn: ssh -l cisco -o KexAlgorithms=diffie-hellman-group14-sha1 192.168.56.101 22, id: 140716822239744 +++
+[2026-06-23 03:35:13,185] connection to CSR1kv
+
+
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***   Emerging Technologies Workshop:     ***
+***    Model Driven Programmability       ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+
+% 22 is not an open connectionConnection to 192.168.56.101 closed by remote host.
+[2026-06-23 03:44:10,210] +++ CSR1kv logfile evidencias/baseline_005D-10/connection_CSR1kv.txt +++
+[2026-06-23 03:44:10,210] +++ Unicon plugin iosxe +++
+Warning: Permanently added '192.168.56.101' (RSA) to the list of known hosts.
+
+[2026-06-23 03:44:10,449] +++ connection to spawn: ssh -l cisco 192.168.56.101 -p 22, id: 140060568132624 +++
+[2026-06-23 03:44:10,449] connection to CSR1kv
+Password: 
+
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***   Emerging Technologies Workshop:     ***
+***    Model Driven Programmability       ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+
+
+CSR1kv#
+[2026-06-23 03:44:10,673] +++ initializing handle +++
+[2026-06-23 03:44:10,674] +++ CSR1kv: executing command 'terminal length 0' +++
+terminal length 0
+CSR1kv#
