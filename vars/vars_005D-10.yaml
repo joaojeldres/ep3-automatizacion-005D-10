@@ -1,0 +1,19 @@
+alumno:
+  codigo: "005D-10"
+  nombre: "Jeldres Molinett Joao Franco"
+
+cliente:
+  empresa: "Agricola Central SA"
+  hostname: "RTR-AGRICEN"
+
+router:
+  ip: "192.168.56.101"
+  usuario: "cisco"
+  password: "cisco123!"
+  loopback_id: 10
+  loopback_ip: "10.5.10.1"
+  loopback_mask: "255.255.255.0"
+  loopback_prefix: "24"
+  descripcion_wan: "Enlace-WAN-Talca"
+  banner: "ACCESO RESTRINGIDO - AGRICEN"
+  ntp_server: "8.8.8.8"
