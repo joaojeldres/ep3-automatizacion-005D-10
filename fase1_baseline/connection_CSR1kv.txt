@@ -1,0 +1,32 @@
+[2026-06-23 04:18:08,277] +++ CSR1kv logfile ./connection_CSR1kv.txt +++
+[2026-06-23 04:18:08,277] +++ Unicon plugin iosxe +++
+Warning: Permanently added '192.168.56.101' (RSA) to the list of known hosts.
+
+[2026-06-23 04:18:08,511] +++ connection to spawn: ssh -l cisco 192.168.56.101 -p 22, id: 140379044221712 +++
+[2026-06-23 04:18:08,512] connection to CSR1kv
+
+ACCESO RESTRINGIDO - AGRICEN
+Password: 
+
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***   Emerging Technologies Workshop:     ***
+***    Model Driven Programmability       ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+
+
+
+RTR-AGRICEN#
+[2026-06-23 04:18:08,736] Learned hostname(s) : ['RTR-AGRICEN'].
+[2026-06-23 04:18:08,736] +++ initializing handle +++
+[2026-06-23 04:18:08,737] +++ RTR-AGRICEN: executing command 'terminal length 0' +++
+terminal length 0
+RTR-AGRICEN#

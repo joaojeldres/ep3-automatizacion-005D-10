@@ -14,6 +14,7 @@ devices:
         ip: 192.168.56.101
         port: 22
         arguments:
+          learn_hostname: true
           connection_timeout: 60
           init_exec_commands:
             - terminal length 0
