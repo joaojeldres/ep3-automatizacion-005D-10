@@ -1,0 +1,15 @@
+=== VALIDACION NETCONF EP3 ===
+Script : validacion_netconf.py
+Alumno : 005D-10 - Jeldres Molinett Joao Franco
+Fecha  : 2026-06-23 04:06:32.438700
+HostVM : labvm
+==============================
+[OK] Hostname corporativo: esperado='RTR-AGRICEN' obtenido='RTR-AGRICEN'
+[OK] IP Loopback: esperado='10.5.10.1' obtenido='10.5.10.1'
+[OK] Mascara Loopback: esperado='255.255.255.0' obtenido='255.255.255.0'
+[OK] Descripcion WAN: esperado='Enlace-WAN-Talca' obtenido='Enlace-WAN-Talca'
+[OK] Servidor NTP: esperado='8.8.8.8' obtenido='8.8.8.8'
+
+Resultado NETCONF: 5/5 criterios OK
+CONFORME
+XML guardado en: /home/devasc/ep3-automatizacion-005D-10/fase3_validacion_netconf/evidencias/rpc_reply_raw.xml
