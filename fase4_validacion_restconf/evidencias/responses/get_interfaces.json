@@ -1,0 +1,21 @@
+{
+  "Cisco-IOS-XE-native:GigabitEthernet": {
+    "name": "1",
+    "description": "Enlace-WAN-Talca",
+    "ip": {
+      "address": {
+        "primary": {
+          "address": "192.168.56.101",
+          "mask": "255.255.255.0"
+        }
+      }
+    },
+    "mop": {
+      "enabled": false,
+      "sysid": false
+    },
+    "Cisco-IOS-XE-ethernet:negotiation": {
+      "auto": true
+    }
+  }
+}
