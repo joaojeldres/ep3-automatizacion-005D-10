@@ -1,0 +1,19 @@
+=== VALIDACION RESTCONF EP3 ===
+Script : validacion_restconf.py
+Alumno : 005D-10 - Jeldres Molinett Joao Franco
+Fecha  : 2026-06-23 04:13:02.494605
+HostVM : labvm
+===============================
+Consulta hostname: HTTP 200
+Consulta loopback: HTTP 200
+Consulta wan: HTTP 200
+Consulta ntp: HTTP 200
+
+[OK] Hostname corporativo: esperado='RTR-AGRICEN' obtenido='RTR-AGRICEN'
+[OK] IP Loopback: esperado='10.5.10.1' obtenido='10.5.10.1'
+[OK] Descripcion WAN: esperado='Enlace-WAN-Talca' obtenido='Enlace-WAN-Talca'
+[OK] Servidor NTP: esperado='8.8.8.8' obtenido='8.8.8.8'
+
+Resultado RESTCONF: 4/4 criterios OK
+CONFORME
+JSON guardados en: /home/devasc/ep3-automatizacion-005D-10/fase4_validacion_restconf/evidencias/responses
