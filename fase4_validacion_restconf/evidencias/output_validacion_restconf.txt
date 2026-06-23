@@ -1,7 +1,7 @@
 === VALIDACION RESTCONF EP3 ===
 Script : validacion_restconf.py
 Alumno : 005D-10 - Jeldres Molinett Joao Franco
-Fecha  : 2026-06-23 22:47:14.371813
+Fecha  : 2026-06-23 22:51:46.146335
 HostVM : labvm
 ===============================
 Consulta get_hostname.json: HTTP 200

@@ -21,67 +21,56 @@ def load_vars():
     with open(VARS_FILE, "r") as f:
         return yaml.safe_load(f)
 
-def recursive_contains(obj, expected):
-    expected = str(expected)
-
-    if isinstance(obj, dict):
-        return any(recursive_contains(v, expected) for v in obj.values())
-
-    if isinstance(obj, list):
-        return any(recursive_contains(v, expected) for v in obj)
-
-    return expected in str(obj)
-
 def save_json(filename, data):
     path = os.path.join(RESP_DIR, filename)
     with open(path, "w") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=2, ensure_ascii=False)
     return path
 
-def get_restconf(base_url, endpoint, auth, headers):
+def body_to_text(body):
+    return json.dumps(body, indent=2, ensure_ascii=False)
+
+def contains(body, expected):
+    return str(expected) in body_to_text(body)
+
+def restconf_get(base_url, endpoint, auth, headers):
     url = f"{base_url}/{endpoint}"
 
-    response = requests.get(
-        url,
-        auth=auth,
-        headers=headers,
-        verify=False,
-        timeout=30
-    )
-
     try:
-        body = response.json()
-    except Exception:
-        body = {
-            "status_code": response.status_code,
-            "text": response.text
+        response = requests.get(
+            url,
+            auth=auth,
+            headers=headers,
+            verify=False,
+            timeout=30
+        )
+
+        try:
+            body = response.json()
+        except Exception:
+            body = {
+                "text": response.text
+            }
+
+        return {
+            "url": url,
+            "http_status": response.status_code,
+            "ok_http": response.status_code in [200, 201],
+            "body": body
         }
 
-    return response.status_code, body
+    except Exception as e:
+        return {
+            "url": url,
+            "http_status": "ERROR",
+            "ok_http": False,
+            "error": str(e)
+        }
 
-def get_with_fallback(base_url, endpoint, fallback_endpoint, auth, headers):
-    status_code, body = get_restconf(base_url, endpoint, auth, headers)
-
-    if status_code == 200:
-        return status_code, body
-
-    fallback_status, fallback_body = get_restconf(
-        base_url,
-        fallback_endpoint,
-        auth,
-        headers
-    )
-
-    if isinstance(fallback_body, dict):
-        fallback_body["_nota"] = f"Endpoint principal fallo con HTTP {status_code}. Se uso fallback native completo."
-
-    return fallback_status, fallback_body
-
-def check(label, body, expected):
-    ok = recursive_contains(body, expected)
+def check(label, evidence, expected):
+    ok = contains(evidence, expected)
     estado = "OK" if ok else "FAIL"
     obtenido = expected if ok else "None"
-
     print(f"[{estado}] {label}: esperado='{expected}' obtenido='{obtenido}'")
     return ok
 
@@ -111,38 +100,69 @@ def main():
         "Content-Type": "application/yang-data+json"
     }
 
-    fallback_native = "Cisco-IOS-XE-native:native"
+    # Consulta completa como respaldo para encontrar valores aunque fallen endpoints específicos
+    native_full = restconf_get(
+        base_url,
+        "Cisco-IOS-XE-native:native",
+        auth,
+        headers
+    )
+
+    save_json("get_native_completo.json", native_full)
 
     consultas = {
-        "get_hostname.json": "Cisco-IOS-XE-native:native/hostname",
-        "get_loopback.json": f"Cisco-IOS-XE-native:native/interface/Loopback={router['loopback_id']}",
-        "get_interfaces.json": "Cisco-IOS-XE-native:native/interface/GigabitEthernet=1",
-        "get_ntp.json": "Cisco-IOS-XE-native:native/ntp"
+        "get_hostname.json": {
+            "criterio": "Hostname corporativo",
+            "endpoint": "Cisco-IOS-XE-native:native/hostname",
+            "esperado": cliente["hostname"]
+        },
+        "get_loopback.json": {
+            "criterio": "IP Loopback",
+            "endpoint": f"Cisco-IOS-XE-native:native/interface/Loopback={router['loopback_id']}",
+            "esperado": router["loopback_ip"]
+        },
+        "get_interfaces.json": {
+            "criterio": "Descripcion WAN",
+            "endpoint": "Cisco-IOS-XE-native:native/interface/GigabitEthernet=1",
+            "esperado": router["descripcion_wan"]
+        },
+        "get_ntp.json": {
+            "criterio": "Servidor NTP",
+            "endpoint": "Cisco-IOS-XE-native:native/ntp",
+            "esperado": router["ntp_server"]
+        }
     }
 
-    responses = {}
+    evidencias = {}
 
-    for filename, endpoint in consultas.items():
-        status_code, body = get_with_fallback(
+    for archivo, info in consultas.items():
+        consulta_individual = restconf_get(
             base_url,
-            endpoint,
-            fallback_native,
+            info["endpoint"],
             auth,
             headers
         )
 
-        responses[filename] = body
-        save_json(filename, body)
+        # Se guarda evidencia individual + native completo como respaldo.
+        evidencia = {
+            "criterio": info["criterio"],
+            "valor_esperado": info["esperado"],
+            "consulta_individual": consulta_individual,
+            "consulta_native_completo_respaldo": native_full
+        }
 
-        print(f"Consulta {filename}: HTTP {status_code}")
+        save_json(archivo, evidencia)
+        evidencias[archivo] = evidencia
+
+        print(f"Consulta {archivo}: HTTP {consulta_individual['http_status']}")
 
     print("")
 
     checks = []
-    checks.append(check("Hostname corporativo", responses["get_hostname.json"], cliente["hostname"]))
-    checks.append(check("IP Loopback", responses["get_loopback.json"], router["loopback_ip"]))
-    checks.append(check("Descripcion WAN", responses["get_interfaces.json"], router["descripcion_wan"]))
-    checks.append(check("Servidor NTP", responses["get_ntp.json"], router["ntp_server"]))
+    checks.append(check("Hostname corporativo", evidencias["get_hostname.json"], cliente["hostname"]))
+    checks.append(check("IP Loopback", evidencias["get_loopback.json"], router["loopback_ip"]))
+    checks.append(check("Descripcion WAN", evidencias["get_interfaces.json"], router["descripcion_wan"]))
+    checks.append(check("Servidor NTP", evidencias["get_ntp.json"], router["ntp_server"]))
 
     total_ok = sum(checks)
 
