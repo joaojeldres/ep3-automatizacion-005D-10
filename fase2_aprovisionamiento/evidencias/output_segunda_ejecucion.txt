@@ -1,0 +1,33 @@
+
+PLAY [EP3 - Aprovisionamiento corporativo CSR1kv] ******************************************************
+
+TASK [Obtener running-config antes de cambios] *********************************************************
+ok: [csr1kv]
+
+TASK [Guardar respaldo inicial sin sobrescribir] *******************************************************
+ok: [csr1kv]
+
+TASK [Habilitar NETCONF] *******************************************************************************
+ok: [csr1kv]
+
+TASK [Habilitar RESTCONF y HTTP seguro] ****************************************************************
+ok: [csr1kv]
+
+TASK [Configurar hostname corporativo] *****************************************************************
+ok: [csr1kv]
+
+TASK [Configurar banner de acceso] *********************************************************************
+ok: [csr1kv]
+
+TASK [Configurar servidor NTP] *************************************************************************
+ok: [csr1kv]
+
+TASK [Configurar descripcion WAN en GigabitEthernet1] **************************************************
+ok: [csr1kv]
+
+TASK [Configurar Loopback de gestion] ******************************************************************
+ok: [csr1kv]
+
+PLAY RECAP *********************************************************************************************
+csr1kv                     : ok=9    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
