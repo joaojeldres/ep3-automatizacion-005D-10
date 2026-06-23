@@ -5,7 +5,7 @@ TASK [Obtener running-config antes de cambios] *********************************
 ok: [csr1kv]
 
 TASK [Guardar respaldo inicial sin sobrescribir] *******************************************************
-changed: [csr1kv]
+ok: [csr1kv]
 
 TASK [Habilitar NETCONF] *******************************************************************************
 ok: [csr1kv]
@@ -14,20 +14,20 @@ TASK [Habilitar RESTCONF y HTTP seguro] ****************************************
 ok: [csr1kv]
 
 TASK [Configurar hostname corporativo] *****************************************************************
-changed: [csr1kv]
+ok: [csr1kv]
 
 TASK [Configurar banner de acceso] *********************************************************************
-changed: [csr1kv]
+ok: [csr1kv]
 
 TASK [Configurar servidor NTP] *************************************************************************
-changed: [csr1kv]
+ok: [csr1kv]
 
 TASK [Configurar descripcion WAN en GigabitEthernet1] **************************************************
-changed: [csr1kv]
+ok: [csr1kv]
 
 TASK [Configurar Loopback de gestion] ******************************************************************
-changed: [csr1kv]
+ok: [csr1kv]
 
 PLAY RECAP *********************************************************************************************
-csr1kv                     : ok=9    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+csr1kv                     : ok=9    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
